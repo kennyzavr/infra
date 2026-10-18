@@ -1,0 +1,17 @@
+{
+  "postbox-public": 10,
+  "tls-edge-public-iridium": 14,
+  "dns-edge-iridium": 6,
+  "http-edge-public-gallium": 8,
+  "http-edge-public-iridium": 9,
+  "dns-edge-gallium": 5,
+  "dns-auth-public-iridium": 4,
+  "filebrowser": 7,
+  "dns-acme-public-iridium": 2,
+  "xray-main": 15,
+  "dns-auth-public-gallium": 3,
+  "tls-edge-public-gallium": 13,
+  "smtp-edge-public-gallium": 11,
+  "ca-main": 1,
+  "smtp-edge-public-iridium": 12
+}

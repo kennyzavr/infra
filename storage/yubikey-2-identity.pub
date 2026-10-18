@@ -1,0 +1,7 @@
+#       Serial: 36349009, Slot: 1
+#         Name: d108infra
+#      Created: Thu, 22 Oct 2026 10:40:48 +0000
+#   PIN policy: Once   (A PIN is required once per session, if set)
+# Touch policy: Cached (A physical touch is required for decryption, and is cached for 15 seconds)
+#    Recipient: age1yubikey1qf748v8xqs53adt8ke3qvjmld0jhdhljd54f4gkl94wtt4njrfdjk8l43lp
+AGE-PLUGIN-YUBIKEY-12XJZ5Q5ZU5U05GSL0MCUR
