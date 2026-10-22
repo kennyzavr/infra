@@ -37,11 +37,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1792674890,
-        "narHash": "sha256-BI02Tu0tJ19s7HpBc8WCR/RIomMhJViMqdb22LCc3i8=",
+        "lastModified": 1792732654,
+        "narHash": "sha256-erg4AMlCL86Ci4A0wajM11+SG6qAtSnPY5qkd3JgY0M=",
         "owner": "kennyzavr",
         "repo": "nix-host-alloy",
-        "rev": "85616e1fad96f22fd0a4bb3bac892b77eaf91b78",
+        "rev": "2eb091d8f82df4e456439c3ceb7b7755fab69e0d",
         "type": "github"
       },
       "original": {

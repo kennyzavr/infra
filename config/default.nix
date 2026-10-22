@@ -57,7 +57,7 @@ in
     hostName: host: lib.nameValuePair "infra-prod-${hostName}" host.nixosConfiguration
   ) infraProd.config.hosts;
 
-  flake.alloyModules.infra-prod = { ... }: {
+  flake.alloyModules.infra-prod = { config, ... }: {
     imports = [
       self.alloyModules.infra
     ];
@@ -84,6 +84,8 @@ in
     facts."ssh/keys/yubikey_2.pub" = {
       file = "storage/yubikey-2-ed25519.pub";
     };
+
+    deploy.signingKeys."silicium-builder-1" = { };
   };
 
   flake.alloyCli.instances."infra-test" = { };

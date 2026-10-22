@@ -28,24 +28,43 @@
       };
     };
 
-  flake.alloyModules.infra-prod = { ... }: {
-    hosts.iridium = { config, ... }: {
-      nets."public" = {
-        primary = true;
-        managed = true;
-        default = true;
-        iface = "enp3s0";
-        v4 = {
-          mode.static = {
-            address = "10.0.0.5";
-            prefixLength = 24;
-            gateway = "10.0.0.1";
+  flake.alloyModules.infra-prod =
+    { lib, config, ... }:
+    let
+      alloy = config;
+    in
+    {
+      hosts.iridium = { config, ... }: {
+        nets."public" = {
+          primary = true;
+          managed = true;
+          default = true;
+          iface = "enp3s0";
+          v4 = {
+            mode.static = {
+              address = "10.0.0.5";
+              prefixLength = 24;
+              gateway = "10.0.0.1";
+            };
+            advertiseAddress = "37.230.192.77";
           };
-          advertiseAddress = "37.230.192.77";
+        };
+
+        deploy = {
+          enable = true;
+          activation.policy = "warn";
+          defaultConnection = "ssh";
+          connections.ssh = {
+            address = config.nets."public".v4.advertiseAddress;
+            port = 22;
+            user = "admin";
+          };
+          signingKeys = [
+            "silicium-builder-1"
+          ];
         };
       };
     };
-  };
 
   flake.alloyModules.infra-test =
     { lib, config, ... }:
