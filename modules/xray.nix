@@ -210,6 +210,9 @@
               "streamSettings": {
                 "network": "xhttp",
                 "security": "none",
+                "sockopt": {
+                  "trustedXForwardedFor": ["X-Forwarded-For"]
+                },
                 "xhttpSettings": {
                   "path": "${jail.secrets.${srv.path.secret}.placeholder}",
                   "host": "${lib.removeSuffix "." (alloy.dns.resolveNode srv.domain)}",
