@@ -22,22 +22,6 @@
           "default-tun" = {
             tun.enable = true;
           };
-        };
-      };
-
-      tls.certs."fb" = {
-        domains = [
-          {
-            zone = "public";
-            name = "fb";
-          }
-        ];
-        ca = "main";
-        src.acme = {
-          acceptTerms = true;
-          email = alloy.dns.zones."public".email;
-          challenge.dns.dnsupdate = {
-            server.endpoint = alloy.services.dns-acme."public".endpoint;
           };
         };
       };
@@ -49,7 +33,7 @@
             name = "fb";
           };
           downstream.tls.mode = "only";
-          downstream.tls.cert = "fb";
+          downstream.tls.cert = "public-wildcard";
           upstream.endpoint = alloy.services.xray."main".tunnelEndpoint;
         };
       };

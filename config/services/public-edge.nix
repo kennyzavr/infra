@@ -24,7 +24,7 @@
         };
         explicitTLS = {
           mode = "require";
-          cert = "mail";
+          cert = "public-wildcard";
         };
         dkim.enable = true;
         hosts."iridium".net = "public";

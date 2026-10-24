@@ -17,6 +17,7 @@
             name = "@";
           }
         ];
+        allowWildcardCerts = true;
         acme = {
           enable = true;
         };
@@ -28,23 +29,6 @@
 
       tls.ca."main" = { };
 
-      tls.certs."ca" = {
-        domains = [
-          {
-            zone = "public";
-            name = "ca";
-          }
-        ];
-        ca = "main";
-        src.acme = {
-          acceptTerms = true;
-          email = alloy.dns.zones."public".email;
-          challenge.dns.dnsupdate = {
-            server.endpoint = alloy.services.dns-acme."public".endpoint;
-          };
-        };
-      };
-
       services.http-edge."public" = {
         routes."ca" = {
           domain = {
@@ -52,7 +36,7 @@
             name = "ca";
           };
           downstream.tls.mode = "only";
-          downstream.tls.cert = "ca";
+          downstream.tls.cert = "public-wildcard";
           upstream.endpoint = alloy.services.ca."main".endpoint;
         };
       };

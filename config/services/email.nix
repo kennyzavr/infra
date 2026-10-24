@@ -19,23 +19,6 @@
         smtp.relayEndpoint = alloy.services.smtp-edge."public".endpoint;
       };
 
-      tls.certs."mail" = {
-        domains = [
-          {
-            zone = "public";
-            name = "mail";
-          }
-        ];
-        ca = "main";
-        src.acme = {
-          acceptTerms = true;
-          email = alloy.dns.zones."public".email;
-          challenge.dns.dnsupdate = {
-            server.endpoint = alloy.services.dns-acme."public".endpoint;
-          };
-        };
-      };
-
       services.http-edge."public" = {
         routes."mail" = {
           domain = {
@@ -43,7 +26,7 @@
             name = "mail";
           };
           downstream.tls.mode = "only";
-          downstream.tls.cert = "mail";
+          downstream.tls.cert = "public-wildcard";
           upstream.endpoint = alloy.services.postbox."public".https.endpoint;
         };
       };
@@ -55,7 +38,7 @@
             name = "mail";
           };
           downstream.port = 465;
-          downstream.tls.cert = "mail";
+          downstream.tls.cert = "public-wildcard";
           upstream.endpoint = alloy.services.postbox."public".smtps.endpoint;
         };
         routes."mail-imap" = {
@@ -64,7 +47,7 @@
             name = "mail";
           };
           downstream.port = 993;
-          downstream.tls.cert = "mail";
+          downstream.tls.cert = "public-wildcard";
           upstream.endpoint = alloy.services.postbox."public".imap.endpoint;
         };
       };

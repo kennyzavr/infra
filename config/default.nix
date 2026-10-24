@@ -15,6 +15,7 @@ in
     ./qemu.nix
     ./overlay.nix
     ./users.nix
+    ./tls.nix
   ];
 
   flake.alloyModules.infra =
