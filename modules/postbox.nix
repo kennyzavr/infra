@@ -1,4 +1,4 @@
-{withSystem, ...}: {
+{ withSystem, ... }: {
   flake.alloyModules.postbox =
     {
       alib,
@@ -116,7 +116,7 @@
               package =
                 { system, ... }:
                 let
-                  pkgs = withSystem system ({pkgs,...}: pkgs);
+                  pkgs = withSystem system ({ pkgs, ... }: pkgs);
                 in
                 pkgs.writeShellScriptBin "postbox-gen-passwd" ''
                   read -r -s -p "Enter password for ${userName}: " pass
@@ -234,7 +234,7 @@
                   993
                 ];
 
-                users.groups."mtls" = {};
+                users.groups."mtls" = { };
 
                 users.users."nginx".extraGroups = [
                   "mtls"
@@ -374,6 +374,7 @@
                     virtual_mailbox_domains = [ (mkDomain srv.domain) ] ++ (lib.map mkDomain srv.extraDomains);
 
                     virtual_transport = "lmtp:unix:/run/dovecot2/lmtp";
+                    default_transport = "route_to_relay";
                     relayhost = [ "[${relayEndpoint.domain}]:${toString relayEndpoint.port}" ];
 
                     smtpd_tls_cert_file = jail.mtls.certPath;
@@ -412,6 +413,16 @@
                         "-o smtpd_client_restrictions=permit_sasl_authenticated,reject"
                       ]
                       ++ lib.optional srv.smtps.proxyv2 "-o smtpd_upstream_proxy_protocol=haproxy";
+                    };
+                    "route_to_relay" = {
+                      type = "unix";
+                      command = "smtp";
+                      args = [
+                        "-o smtp_tls_cert_file=${jail.mtls.certPath}"
+                        "-o smtp_tls_key_file=${jail.mtls.keyPath}"
+                        "-o smtp_tls_CAfile=${alloy.mtls.certPath}"
+                        "-o smtp_tls_security_level=encrypt"
+                      ];
                     };
                   };
                 };
