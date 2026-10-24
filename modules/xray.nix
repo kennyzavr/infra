@@ -439,6 +439,7 @@
         endpoints.${srv.tunnelEndpoint} = {
           port = 443;
           httpBuffering = false;
+          httpResponseTimeout = 1200;
           targets = lib.mapAttrsToList (o: _: {
             ip.v6 = alloy.jails."xray-${srvName}".overlays.${o}.ipv6;
             overlay = o;
@@ -579,6 +580,8 @@
                     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
                     proxy_buffering off;
+                    proxy_request_buffering off;
+                    proxy_read_timeout 1200s;
                   }
 
                   location / {
