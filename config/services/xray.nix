@@ -36,6 +36,15 @@
           downstream.tls.cert = "public-wildcard";
           upstream.endpoint = alloy.services.xray."main".tunnelEndpoint;
         };
+        routes."bp" = {
+          domain = {
+            zone = "public";
+            name = "bp";
+          };
+          downstream.tls.mode = "only";
+          downstream.tls.cert = "public-wildcard";
+          upstream.endpoint = alloy.services.xray."main".subsEndpoint;
+        };
       };
 
       endpoints."filebrowser" = {
