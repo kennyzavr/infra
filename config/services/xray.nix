@@ -51,6 +51,7 @@
           downstream.tls.mode = "only";
           downstream.tls.cert = "public-wildcard";
           upstream.endpoint = alloy.services.xray."main".tunnelEndpoint;
+          addDnsRecords = false;
         };
         routes."bp" = {
           domain = {
@@ -62,6 +63,16 @@
           upstream.endpoint = alloy.services.xray."main".subsEndpoint;
         };
       };
+
+      dns.records = [
+        {
+          domain = {
+            zone = "public";
+            name = "fb";
+          };
+          data.a = alloy.hosts."gallium".nets."public".v4.advertiseAddress;
+        }
+      ];
 
       endpoints."filebrowser" = {
         port = 443;
