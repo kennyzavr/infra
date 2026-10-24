@@ -1,4 +1,6 @@
 {
+  "no-routing-tun": 4,
+  "default-tun": 2,
   "default": 1,
-  "default-tun": 2
+  "no-routing": 3
 }
