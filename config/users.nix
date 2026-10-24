@@ -9,6 +9,10 @@
       me-silicium = { };
       me-lithium = { };
       me-pixel9 = { };
+      aine-1 = { };
+      aine-2 = { };
+      tane-1 = { };
+      tane-2 = { };
     };
   };
 }

@@ -16,12 +16,28 @@
           zone = "public";
           name = "fb";
         };
+        countryCodes = [
+          "ru"
+        ];
         fallbackEndpoint = "filebrowser";
         targets = {
-          "default" = { };
-          "default-tun" = {
-            tun.enable = true;
+          "default" = {
+            remark = "🍓 Нидерланды · Основной";
+            country.direct = true;
           };
+          "default-tun" = {
+            remark = "🍇 Нидерланды · Основной · Служебный";
+            tun.enable = true;
+            country.direct = true;
+          };
+          "no-routing" = {
+            remark = "🍒 Нидерланды · Без роутинга";
+            country.direct = false;
+          };
+          "no-routing-tun" = {
+            remark = "🥝 Нидерланды · Без роутинга · Служебный";
+            tun.enable = true;
+            country.direct = false;
           };
         };
       };
