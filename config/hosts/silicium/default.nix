@@ -5,6 +5,7 @@
     ./qemu.nix
     ./boot.nix
     ./disks.nix
+    ./hardware.nix
   ];
 
   flake.alloyModules.infra = { ... }: {
