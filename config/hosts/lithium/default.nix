@@ -32,7 +32,7 @@
       workspace.secrets.age.keyPairs = [
         {
           identity = config.ssh.keys."host".path;
-          recipient = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINgzkaREqGKt8NFJNeNbEUF3fijtcGjARSOTB5r+cwf7";
+          recipient = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPhzQvciyMLXuaWoF/JzY1qB7txCcDIdtLz7prepqBjQ";
         }
       ];
 

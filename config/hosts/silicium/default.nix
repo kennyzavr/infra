@@ -36,7 +36,7 @@
       workspace.secrets.age.keyPairs = [
         {
           identity = config.ssh.keys."host".path;
-          recipient = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJV3gHcDpLM43fuJx8kqZN/AbOMHVrrJUGsundpuA10h root@iridium";
+          recipient = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFyravmN1Lt2lDJ3V7P+tXoFdGKrb1DmHttFBGOKHRfO";
         }
       ];
 
