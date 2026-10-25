@@ -4,6 +4,7 @@
     ./xray.nix
     ./qemu.nix
     ./boot.nix
+    ./disks.nix
   ];
 
   flake.alloyModules.infra = { ... }: {
