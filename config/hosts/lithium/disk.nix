@@ -12,7 +12,7 @@
         settings = { ... }: {
           devices.disk.main = {
             type = "disk";
-            device = "/dev/disk/by-id/nvme-SAMSUNG_MZVLB256HAHQ-00000_S444NX0KB50828";
+            device = "/dev/disk/by-id/nvme-Netac_NVMe_SSD_128GB_AA210801201280300120";
             content = {
               type = "gpt";
               partitions = {
