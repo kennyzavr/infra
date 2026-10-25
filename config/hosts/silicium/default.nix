@@ -3,6 +3,7 @@
     ./desktop.nix
     ./xray.nix
     ./qemu.nix
+    ./boot.nix
   ];
 
   flake.alloyModules.infra = { ... }: {
