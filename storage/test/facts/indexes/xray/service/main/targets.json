@@ -1,6 +1,10 @@
 {
-  "default": 1,
-  "no-routing-tun": 4,
-  "default-tun": 2,
-  "no-routing": 3
+  "desktop-global-relay": 2,
+  "desktop-global-direct": 1,
+  "phone-split-relay": 8,
+  "phone-global-direct": 5,
+  "phone-global-relay": 6,
+  "desktop-split-direct": 3,
+  "phone-split-direct": 7,
+  "desktop-split-relay": 4
 }

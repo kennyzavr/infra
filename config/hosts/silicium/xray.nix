@@ -4,7 +4,7 @@
       xray."main" = {
         enable = true;
         client = "me-silicium";
-        defaultTarget = "default-tun";
+        defaultTarget = "msk-tun-bypass";
       };
     };
   };

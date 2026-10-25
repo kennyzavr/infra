@@ -21,23 +21,53 @@
         ];
         fallbackEndpoint = "filebrowser";
         targets = {
-          "default" = {
-            remark = "🍓 Нидерланды · Основной";
-            country.direct = true;
+          "phone-global-relay" = {
+            remark = "Телефон · Полный · Через МСК";
+            tun.enable = false;
+            country.direct = false;
+            address = alloy.hosts."iridium".nets."public".v4.advertiseAddress;
           };
-          "default-tun" = {
-            remark = "🍇 Нидерланды · Основной · Служебный";
+          "phone-global-direct" = {
+            remark = "Телефон · Полный · Прямой";
+            tun.enable = false;
+            country.direct = false;
+            address = alloy.hosts."gallium".nets."public".v4.advertiseAddress;
+          };
+          "phone-split-relay" = {
+            remark = "🔥 Телефон · Только иностранный · Через МСК";
+            tun.enable = false;
+            country.direct = true;
+            address = alloy.hosts."iridium".nets."public".v4.advertiseAddress;
+          };
+          "phone-split-direct" = {
+            remark = "Телефон · Только иностранный · Прямой";
+            tun.enable = false;
+            country.direct = true;
+            address = alloy.hosts."gallium".nets."public".v4.advertiseAddress;
+          };
+          "desktop-global-relay" = {
+            remark = "Компьютер · Полный · Через МСК";
+            tun.enable = true;
+            country.direct = false;
+            address = alloy.hosts."iridium".nets."public".v4.advertiseAddress;
+          };
+          "desktop-global-direct" = {
+            remark = "Компьютер · Полный · Прямой";
+            tun.enable = true;
+            country.direct = false;
+            address = alloy.hosts."gallium".nets."public".v4.advertiseAddress;
+          };
+          "desktop-split-relay" = {
+            remark = "Компьютер · Только иностранный · Через МСК";
             tun.enable = true;
             country.direct = true;
+            address = alloy.hosts."iridium".nets."public".v4.advertiseAddress;
           };
-          "no-routing" = {
-            remark = "🍒 Нидерланды · Без роутинга";
-            country.direct = false;
-          };
-          "no-routing-tun" = {
-            remark = "🥝 Нидерланды · Без роутинга · Служебный";
+          "desktop-split-direct" = {
+            remark = "Компьютер · Только иностранный · Прямой";
             tun.enable = true;
-            country.direct = false;
+            country.direct = true;
+            address = alloy.hosts."gallium".nets."public".v4.advertiseAddress;
           };
         };
       };
@@ -70,7 +100,7 @@
             zone = "public";
             name = "fb";
           };
-          data.a = alloy.hosts."gallium".nets."public".v4.advertiseAddress;
+          data.a = alloy.hosts."iridium".nets."public".v4.advertiseAddress;
         }
       ];
 
