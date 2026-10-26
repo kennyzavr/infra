@@ -32,7 +32,7 @@
     ];
 
     hosts.silicium = { config, ... }: {
-      ssh.keys."host" = {};
+      ssh.keys."host" = { };
 
       workspace.secrets.age.keyPairs = [
         {
