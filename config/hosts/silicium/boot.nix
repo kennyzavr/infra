@@ -16,15 +16,26 @@
           pkgs.sbctl
         ];
 
+        boot.initrd.systemd.enable = true;
+
         boot.loader.systemd-boot.enable = lib.mkForce false;
 
         boot.lanzaboote = {
           enable = true;
+          configurationLimit = 4;
           pkiBundle = "/var/lib/sbctl";
           autoGenerateKeys.enable = true;
           autoEnrollKeys = {
             enable = true;
             autoReboot = true;
+          };
+          measuredBoot = {
+            enable = true;
+            pcrs = [
+              0
+              4
+              7
+            ];
           };
         };
       };

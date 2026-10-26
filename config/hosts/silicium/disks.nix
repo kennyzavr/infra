@@ -30,7 +30,11 @@
                   content = {
                     type = "luks";
                     name = "cryptroot";
-                    settings = { };
+                    settings = {
+                      crypttabExtraOpts = [
+                        "tpm2-device=auto"
+                      ];
+                    };
                     askPassword = true;
                     content = {
                       type = "filesystem";
@@ -53,7 +57,11 @@
                   content = {
                     type = "luks";
                     name = "crypthome";
-                    settings = { };
+                    settings = {
+                      crypttabExtraOpts = [
+                        "tpm2-device=auto"
+                      ];
+                    };
                     askPassword = true;
                     content = {
                       type = "filesystem";
