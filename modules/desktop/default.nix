@@ -65,6 +65,10 @@
                   "kitty.desktop"
                 ];
               };
+
+              programs.git = {
+                enable = true;
+              };
             };
 
             qemu.nixosModule = {
