@@ -80,7 +80,7 @@ in
   };
 
   flake.nixosConfigurations = lib.mapAttrs' (
-    hostName: host: lib.nameValuePair "infra-prod-${hostName}" host.nixosConfiguration
+    hostName: host: lib.nameValuePair hostName host.nixosConfiguration
   ) infraProd.config.hosts;
 
   flake.alloyModules.infra-prod = { config, ... }: {
