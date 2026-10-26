@@ -13,6 +13,12 @@
       aine-2 = { };
       tane-1 = { };
       tane-2 = { };
+      luna-1 = { };
+      luna-2 = { };
+      luna-3 = { };
+      leon-1 = { };
+      leon-2 = { };
+      leon-3 = { };
     };
   };
 }
