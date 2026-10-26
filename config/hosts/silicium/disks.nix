@@ -70,7 +70,7 @@
 
       nixosModule = {
         fileSystems."/media" = {
-          device = "/dev/disk/by-id/ata-KingDian_S280_240GB_2018070201235";
+          device = "/dev/disk/by-id/ata-KingDian_S280_240GB_2018070201235-part1";
           fsType = "ext4";
           options = [ "nofail" ];
         };
