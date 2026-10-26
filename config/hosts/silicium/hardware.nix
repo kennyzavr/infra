@@ -1,4 +1,4 @@
-{ lib, inputs, ... }: {
+{ lib, ... }: {
   flake.alloyModules.infra =
     { config, ... }:
     {
@@ -31,6 +31,14 @@
           boot.kernelModules = [ "kvm-amd" ];
 
           hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+          hardware.graphics.enable = true;
+          services.xserver.videoDrivers = [ "nvidia" ];
+          hardware.nvidia = {
+            open = true;
+            modesetting.enable = true;
+            branch = "stable";
+          };
         };
     };
   };
