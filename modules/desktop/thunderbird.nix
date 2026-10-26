@@ -17,6 +17,21 @@
             home.sharedModule =
               { pkgs, config, ... }:
               {
+                xdg.autostart = {
+                  enable = true;
+                  entries = [
+                    "${pkgs.thunderbird}/share/applications/thunderbird.desktop"
+                  ];
+                };
+
+                xdg.mimeApps = {
+                  enable = true;
+                  defaultApplications = {
+                    "x-scheme-handler/mailto" = "thunderbird.desktop";
+                    "message/rfc822" = "thunderbird.desktop";
+                  };
+                };
+
                 programs.thunderbird = {
                   enable = true;
                 };
