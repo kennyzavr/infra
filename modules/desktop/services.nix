@@ -19,12 +19,25 @@
         in
         {
           config = lib.mkIf host.desktop.enable {
+            home.sharedModule = {
+              services.ssh-agent.enable = false;
+            };
+
             nixosModule =
               { pkgs, config, ... }:
               {
                 environment.systemPackages = [
                   pkgs.wl-clipboard
+                  pkgs.age-plugin-yubikey
+                  pkgs.age
+                  pkgs.yubikey-manager
                 ];
+
+                services.gnome.gcr-ssh-agent.enable = false;
+
+                programs.ssh.startAgent = false;
+
+                services.pcscd.enable = true;
 
                 services.gnome.gnome-keyring.enable = true;
                 security.pam.services.greetd.enableGnomeKeyring = true;
