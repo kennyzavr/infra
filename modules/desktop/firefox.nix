@@ -23,6 +23,17 @@
                   profileNames = [ "default" ];
                 };
 
+                xdg.mimeApps = {
+                  enable = true;
+                  defaultApplications = {
+                    "text/html" = "firefox.desktop";
+                    "x-scheme-handler/http" = "firefox.desktop";
+                    "x-scheme-handler/https" = "firefox.desktop";
+                    "x-scheme-handler/ftp" = "firefox.desktop";
+                    "application/xhtml+xml" = "firefox.desktop";
+                  };
+                };
+
                 programs.firefox = {
                   enable = true;
                   nativeMessagingHosts = [
@@ -78,7 +89,9 @@
                       "browser.startup.page" = 3;
                       "sidebar.revamp" = true;
                       "sidebar.verticalTabs" = true;
+                      "sidebar.position_start" = false;
                       "widget.use-xdg-desktop-portal.file-picker" = 1;
+                      "browser.tabs.closeWindowWithLastTab" = false;
                     };
                   };
                 };
