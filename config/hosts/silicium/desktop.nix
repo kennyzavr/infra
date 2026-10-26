@@ -49,6 +49,7 @@
 
           programs.ssh = {
             enable = true;
+            enableDefaultConfig = false;
 
             settings."github.com" = {
               User = "git";
