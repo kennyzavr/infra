@@ -27,11 +27,32 @@ in
             "flakes"
             "nix-command"
           ];
+          nix.settings.auto-optimise-store = true;
+          nix.gc = {
+            automatic = true;
+            dates = "weekly";
+            options = "--delete-older-than 14d";
+            persistent = true;
+          };
+
+          nixpkgs.config.allowUnfree = true;
 
           environment.systemPackages = [
             pkgs.dig
             pkgs.tcpdump
             pkgs.helix
+          ];
+
+          security.pki.caCertificateBlacklist = [
+            "emSign ECC Root CA - G3"
+          ];
+        };
+      };
+
+      jailSubmodule = {
+        nixosModule = { pkgs, ... }: {
+          security.pki.caCertificateBlacklist = [
+            "emSign ECC Root CA - G3"
           ];
         };
       };
@@ -39,6 +60,10 @@ in
     {
       options.hosts = lib.mkOption {
         type = lib.types.attrsOf (lib.types.submodule hostSubmodule);
+      };
+
+      options.jails = lib.mkOption {
+        type = lib.types.attrsOf (lib.types.submodule jailSubmodule);
       };
 
       config = {
