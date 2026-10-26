@@ -22,7 +22,7 @@
           ];
         };
 
-      home.sharedModule =
+      users.kennyzavr.home.module =
         { pkgs, ... }:
         let
           pkgsUnstable = withSystem pkgs.stdenv.hostPlatform.system (
@@ -44,6 +44,17 @@
             settings = {
               discordBranch = "canary";
               webRTCIPHandlingPolicy = "default_public_interface_only";
+            };
+          };
+
+          programs.ssh = {
+            enable = true;
+
+            settings."github.com" = {
+              User = "git";
+              IdentityFile = "~/.ssh/id_ed25519_sk_yk_1";
+              IdentitiesOnly = true;
+              IdentityAgent = "none";
             };
           };
         };
