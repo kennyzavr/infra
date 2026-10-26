@@ -17,6 +17,8 @@
             home.sharedModule =
               { pkgs, config, ... }:
               {
+                xdg.autostart.enable = true;
+
                 programs.keepassxc = {
                   enable = true;
                   autostart = true;
@@ -24,7 +26,7 @@
                     Browser.UpdateBinaryPath = false;
                     Browser.Enabled = true;
                     GUI = {
-                      AdvencedSettings = true;
+                      AdvancedSettings = true;
                       ApplicationTheme = "Classic";
                       CompactMode = true;
                       HidePasswords = true;
